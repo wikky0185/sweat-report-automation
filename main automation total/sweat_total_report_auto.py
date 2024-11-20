@@ -10,7 +10,7 @@ start, end = None, None  # 시작 행 (None이면 처음부터), 끝 행 (None�
 dt1 = th.drive_txt1()  # 설문지 텍스트
 dt2 = th.drive_txt2()  # 기본 정보 텍스트
 di = th.drive_images(dt1, start, end) # 이미지 데이터
-th.open_hwp()
+th.open_hwp
 
 for index, row in dt1.iloc[start:end].iterrows():
     th.report_total(row, index, di, dt2)  # 튜터링 보고서 생성
