@@ -26,8 +26,8 @@ def txt_r(hwp, row, base): # 텍스트 삽입 함수 (튜터링 보고서)
     hwp.PutFieldText("주차", row["주차"])
     hwp.PutFieldText("수업방법", row["수업방법"])
     hwp.PutFieldText("학교", base["학교"])
-    hwp.PutFieldText("수업장소", base["주소"]+"("+(base["학년반"])+")")
-    hwp.PutFieldText("시작시간", base[row["주차"]]+base["시작시간"])
+    hwp.PutFieldText("수업장소", f'{base["주소"]}({base["학년반"]})')
+    hwp.PutFieldText("시작시간", f'{base[row["주차"]]} {base["시작시간"]}')
     hwp.PutFieldText("종료시간", base[row["주차"]]+base["종료시간"])
     hwp.PutFieldText("학년반1", base["학년반"])
 
@@ -46,11 +46,11 @@ def txt_p(hwp, row, base):# 텍스트 삽입 함수 (사진 보고서)
     hwp.PutFieldText("학년반", base["학년반"])
     hwp.PutFieldText("이름", base["반짱"])
     hwp.PutFieldText("연락처", base["연락처"])
-    hwp.PutFieldText("주소", base["주소"] + " "+base["학교"] + " "+ base["학년반"])
+    hwp.PutFieldText("주소", f'{base["주소"]} {base["학교"]} {base["학년반"]}')
     hwp.PutFieldText("인원", row["인원"])
     hwp.PutFieldText("세부내용", row["세부내용"])
     hwp.PutFieldText("날짜", base[row["주차"]])
-    hwp.PutFieldText("시간", base["시간"])
+    hwp.PutFieldText("시간", f'{base["시작시간"]} ~ {base["종료시간"]}({base["시간"]})')
 
 ############################################### (파일 저장 이름)
 
@@ -59,7 +59,7 @@ def save_name_r(hwp,row,base): # 파일 이름 설정 (튜터링보고서)
     school = base["학교"]
     grade_class = base["학년반"]
     week = row["주차"]
-    file_name = f"[{school} ({grade_class}) {week}]SWeat 튜터링 보고서.hwp" 
+    file_name = f"[{school} ({grade_class}) {week}] SWeat 튜터링 보고서.hwp" 
     save_path = os.path.join(SAVE_PATH, file_name)
 
     # 파일 저장

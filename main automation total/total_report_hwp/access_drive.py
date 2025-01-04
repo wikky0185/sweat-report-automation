@@ -16,6 +16,7 @@ drive_service = build('drive', 'v3', credentials=credentials) # Google Drive API
 # Google Drive에서 이미지 다운로드
 def drive_images(dt1, start_row=None, end_row=None): 
     # 슬라이싱된 데이터 가져오기
+        
     sliced_dt1 = dt1.iloc[start_row:end_row] if start_row is not None or end_row is not None else dt1
     
     # 슬라이싱된 데이터에서 인덱스 가져오기
@@ -37,7 +38,7 @@ def drive_images(dt1, start_row=None, end_row=None):
     for idx in matching_indices:
         if idx < len(sorted_subfolders):  # 인덱스 범위 확인
             subfolder = sorted_subfolders[idx]  # 해당 인덱스의 폴더 선택
-            print(f"폴더 불러오는 중 : {subfolder['name']}")
+            print(f"이미지 불러오는 중 : {subfolder['name']}")
             
             # 폴더 내 이미지 처리
             image_files = drive_service.files().list(
